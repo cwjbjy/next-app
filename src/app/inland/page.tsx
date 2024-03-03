@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Card from "@/components/card";
+
+export const metadata: Metadata = {
+  title: "最新国内",
+  description: "今日头条，时时获取新闻",
+};
 
 export async function getNews() {
   const url = `https://v.juhe.cn/toutiao/index?type=guonei&key=${process.env.NEXT_PUBLIC_KEY}`;
@@ -10,12 +16,12 @@ export async function getNews() {
   return list.result?.data || [];
 }
 
-export default async function Home() {
+export default async function Inland() {
   const list = await getNews();
   return (
     <article>
-      <Card url="'/toutiao.png'" list={list}>
-        今日头条
+      <Card url="'/shehui.png'" list={list}>
+        最新国内
       </Card>
     </article>
   );

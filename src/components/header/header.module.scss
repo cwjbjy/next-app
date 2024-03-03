@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  max-width: 1200px;
+  margin: 20px auto;
+  .title {
+    font-size: 32px;
+    font-weight: bolder;
+    font-style: italic;
+    text-align: center;
+  }
+  .subtitle {
+    color: #fe8900;
+    font-weight: bold;
+  }
+}
