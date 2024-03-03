@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import Card from "@/components/card";
+import type { Metadata } from 'next';
+import Card from '@/components/card';
 
 export const metadata: Metadata = {
-  title: "最新军事",
-  description: "今日头条，时时获取新闻",
+  title: '最新军事',
+  description: '今日头条，时时获取新闻',
 };
 
 async function getNews() {

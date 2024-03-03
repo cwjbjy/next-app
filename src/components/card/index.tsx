@@ -1,7 +1,7 @@
-"use client";
-import { useCallback } from "react";
-import Image from "next/image";
-import { oldList } from "./config";
+'use client';
+import { useCallback } from 'react';
+import Image from 'next/image';
+import { oldList } from './config';
 
 interface Item {
   url: string;
@@ -33,18 +33,14 @@ export default function Card({ children, url, list }: Porps) {
           <>接口访问次数今日已达上限</>
         ) : (
           currentList.map((item, index) => (
-            <div
-              key={index}
-              className="card-item"
-              onClick={() => handlerClick(item.url)}
-            >
+            <div key={index} className="card-item" onClick={() => handlerClick(item.url)}>
               {item.thumbnail_pic_s ? (
                 <Image
                   src={item.thumbnail_pic_s}
                   alt="Picture of the author"
                   width={228}
                   height={128}
-                  loading={"lazy"}
+                  loading={'lazy'}
                 />
               ) : (
                 <div className="no-image">暂无图片</div>

@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import Header from "@/components/header";
-import Tabs from "@/components/tabs";
-import "./globals.scss";
+import Header from '@/components/header';
+import Tabs from '@/components/tabs';
+import './globals.scss';
 
 export const metadata: Metadata = {
-  title: "今日头条",
-  description: "今日头条，时时获取新闻",
+  title: '今日头条',
+  description: '今日头条，时时获取新闻',
 };
 
 export default function RootLayout({

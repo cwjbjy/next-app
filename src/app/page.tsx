@@ -1,4 +1,4 @@
-import Card from "@/components/card";
+import Card from '@/components/card';
 
 async function getNews() {
   const url = `https://v.juhe.cn/toutiao/index?type=guonei&key=${process.env.NEXT_PUBLIC_KEY}`;
