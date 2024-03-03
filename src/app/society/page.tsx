@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "今日头条，时时获取新闻",
 };
 
-export async function getNews() {
+async function getNews() {
   const url = `https://v.juhe.cn/toutiao/index?type=shehui&key=${process.env.NEXT_PUBLIC_KEY}`;
 
   const res = await fetch(url, { next: { revalidate: 60 * 60 * 24 } });

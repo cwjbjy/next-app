@@ -1,6 +1,6 @@
 import Card from "@/components/card";
 
-export async function getNews() {
+async function getNews() {
   const url = `https://v.juhe.cn/toutiao/index?type=guonei&key=${process.env.NEXT_PUBLIC_KEY}`;
 
   const res = await fetch(url, { next: { revalidate: 60 * 60 * 24 } });
