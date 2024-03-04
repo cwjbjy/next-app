@@ -1,7 +1,6 @@
 'use client';
 import { useCallback } from 'react';
 import Image from 'next/image';
-import { oldList } from './config';
 
 interface Item {
   url: string;
@@ -19,7 +18,6 @@ export default function Card({ children, url, list }: Porps) {
   const handlerClick = useCallback((value: string) => {
     window.open(value);
   }, []);
-  const currentList = list.length === 0 ? oldList : list;
 
   return (
     <div className="card">
@@ -29,10 +27,10 @@ export default function Card({ children, url, list }: Porps) {
         </div>
       </div>
       <div className="card-body">
-        {currentList.length === 0 ? (
+        {list.length === 0 ? (
           <>接口访问次数今日已达上限</>
         ) : (
-          currentList.map((item, index) => (
+          list.map((item, index) => (
             <div key={index} className="card-item" onClick={() => handlerClick(item.url)}>
               {item.thumbnail_pic_s ? (
                 <Image
