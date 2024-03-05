@@ -10,6 +10,8 @@
     "lint": "eslint src --fix --ext .ts,.tsx,.js,.jsx --max-warnings 0"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.0",
+    "antd": "^5.15.0",
     "immer": "^10.0.3",
     "next": "14.1.1",
     "react": "^18",

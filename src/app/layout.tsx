@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import Header from '@/components/header';
 import Tabs from '@/components/tabs';
 import './globals.scss';
@@ -17,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <Tabs />
-        {children}
+        <AntdRegistry>
+          <Header />
+          <Tabs />
+          {children}
+        </AntdRegistry>
       </body>
     </html>
   );
