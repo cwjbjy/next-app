@@ -1,6 +1,6 @@
 'use client';
-import { useCallback } from 'react';
 import Image from 'next/image';
+import { useCallback } from 'react';
 
 interface Item {
   url: string;

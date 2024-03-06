@@ -1,5 +1,6 @@
-import type { Metadata } from 'next';
 import Card from '@/components/card';
+
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '最新体育',

@@ -1,8 +1,9 @@
 'use client';
 import Link from 'next/link';
-import styles from './tabs.module.scss';
 import { usePathname } from 'next/navigation';
+
 import { menu } from './config';
+import styles from './tabs.module.scss';
 
 export default function Tabs() {
   const pathname = usePathname();

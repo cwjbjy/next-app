@@ -1,7 +1,10 @@
-import type { Metadata } from 'next';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+
 import Header from '@/components/header';
 import Tabs from '@/components/tabs';
+
+import type { Metadata } from 'next';
+
 import './globals.scss';
 
 export const metadata: Metadata = {
