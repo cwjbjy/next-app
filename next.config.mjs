@@ -10,6 +10,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'minipc.eastday.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'dfzximg02.dftoutiao.com',
       },
     ],

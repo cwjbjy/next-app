@@ -18,7 +18,6 @@
       }
     ],
     "no-debugger": "warn", //提交时不允许有debugger
-    //import导入顺序规则
     "import/order": [
       "error",
       {
@@ -29,9 +28,6 @@
           {
             "pattern": "react*",
             "group": "builtin",
-            "patternOptions": {
-              "noComment": false
-            },
             "position": "before"
           },
           {
@@ -50,6 +46,7 @@
             "position": "after"
           }
         ],
+        "pathGroupsExcludedImportTypes": ["react"],
         "newlines-between": "always", //每个分组之间换行
         //根据字母顺序对每个组内的顺序进行排序
         "alphabetize": {

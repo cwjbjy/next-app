@@ -1,17 +1,14 @@
 'use client';
-import Image from 'next/image';
 import { useCallback } from 'react';
 
-interface Item {
-  url: string;
-  thumbnail_pic_s: string;
-  title: string;
-}
+import Image from 'next/image';
+
+import type { New } from '@/apis/model';
 
 interface Porps {
   children: React.ReactNode;
   url: string;
-  list: Item[];
+  list: New[];
 }
 
 export default function Card({ children, url, list }: Porps) {

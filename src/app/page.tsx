@@ -1,20 +1,12 @@
 import Card from '@/components/card';
 
-async function getNews() {
-  const url = `https://v.juhe.cn/toutiao/index?type=guonei&key=${process.env.NEXT_PUBLIC_KEY}`;
-
-  const res = await fetch(url, { next: { revalidate: 60 * 60 * 24 } });
-
-  const list = await res.json();
-
-  return list.result?.data || [];
-}
+import { getNews } from '@/apis/api';
 
 export default async function Home() {
-  const list = await getNews();
+  const list = await getNews({ type: 'guonei' });
   return (
     <article>
-      <Card url="'/toutiao.png'" list={list}>
+      <Card url="'/toutiao.png'" list={list.result?.data || []}>
         今日头条
       </Card>
     </article>
