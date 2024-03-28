@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
-import './config/env.mjs';
 
 const nextConfig = {
+  output: 'standalone',
+  reactStrictMode: false,
+  compiler: {
+    styledComponents: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -17,9 +21,6 @@ const nextConfig = {
         hostname: 'dfzximg02.dftoutiao.com',
       },
     ],
-  },
-  sassOptions: {
-    additionalData: '@import "@/styles/index.scss";',
   },
 };
 

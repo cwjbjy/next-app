@@ -1,4 +1,4 @@
-import qs from 'qs';
+import queryString from 'query-string';
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
@@ -23,19 +23,22 @@ class Request {
     let requestPayload = ''; //请求体数据
     //请求头
     const headers = {
-      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IuS4gOWPtuaJgeiInyIsImlhdCI6MTcwOTcyMzA2NCwiZXhwIjoxNzA5ODA5NDY0fQ.2SsgZ0vNAfaDq6D1lRzTiOVFtUDWmt27zu2r836ZsuY`,
+      authorization: `Bearer ...`,
     };
 
-    const config: Config = time
-      ? time > 0
-        ? { next: { revalidate: time } }
-        : { cache: 'no-store' }
-      : { cache: 'force-cache' };
+    const config: Config =
+      time || time === 0
+        ? time > 0
+          ? { next: { revalidate: time } }
+          : { cache: 'no-store' }
+        : { cache: 'force-cache' };
 
     if (method === 'GET' || method === 'DELETE') {
       //fetch对GET请求等，不支持将参数传在body上，只能拼接url
-      queryParams = qs.stringify(params, { arrayFormat: 'repeat' }) as string;
-      url = `${url}?${queryParams}`;
+      if (params) {
+        queryParams = queryString.stringify(params);
+        url = `${url}?${queryParams}`;
+      }
     } else {
       //非form-data传输JSON数据格式
       if (!['[object FormData]', '[object URLSearchParams]'].includes(Object.prototype.toString.call(params))) {
@@ -58,11 +61,24 @@ class Request {
    * 响应拦截器
    */
   interceptorsResponse<T>(res: Response): Promise<T> {
-    if (res.ok) {
-      return res.json() as Promise<T>;
-    } else {
-      throw new Error('Request failed');
-    }
+    return new Promise((resolve, reject) => {
+      const requestUrl = res.url;
+      if (res.ok) {
+        return resolve(res.json() as Promise<T>);
+      } else {
+        res
+          .clone()
+          .text()
+          .then((text) => {
+            try {
+              const errorData = JSON.parse(text);
+              return reject({ message: errorData || '接口错误', url: requestUrl });
+            } catch (error) {
+              return reject({ error, url: requestUrl });
+            }
+          });
+      }
+    });
   }
 
   async httpFactory<T>({ url = '', params = {}, method }: Props): Promise<T> {
